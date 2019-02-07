@@ -17,14 +17,5 @@ public class FoodService {
 
     DummyData DummyData = new DummyData();
 
-    private final ApplicationEventPublisher publisher;
-
-    RecipeService(ApplicationEventPublisher publisher, DummyData DummyData) {
-        this.publisher = publisher;
-    }
-    public Flux<HashMap> all() {
-        return Flux.just(this.DummyData.buildDataSet());
-    }
-
 }
 

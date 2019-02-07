@@ -10,6 +10,7 @@ public class FoodDto {
     public int calories;
     public int protein;
     public int fat;
+    public int carbs;
 
     public String getName() {
         return name;
@@ -39,15 +40,19 @@ public class FoodDto {
         return fat;
     }
 
-    public void setFat(int fat) {
-        this.fat = fat;
-    }
+    public void setFat(int fat) { this.fat = fat; }
 
-    public FoodDto(String name, int calories, int protein, int fat) {
+    public int getCarbs() {return carbs;}
+
+    public void setCarbs(int carbs){this.carbs = carbs;}
+
+    public FoodDto(String name, int calories, int protein, int fat, int carbs) {
         this.name = name;
         this.calories = calories;
         this.protein = protein;
         this.fat = fat;
+        this.carbs = carbs;
+
     }
 
     @Override
@@ -58,11 +63,12 @@ public class FoodDto {
         return calories == foodDto.calories &&
                 protein == foodDto.protein &&
                 fat == foodDto.fat &&
+                carbs == foodDto.carbs &&
                 Objects.equals(name, foodDto.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, calories, protein, fat);
+        return Objects.hash(name, calories, protein, fat, carbs);
     }
 }
