@@ -1,7 +1,7 @@
 package com.excella.foodinc.controllers;
 
 import com.excella.foodinc.common.FoodDto;
-import com.excella.foodinc.services.FoodIncService;
+import com.excella.foodinc.services.FoodService;
 import static org.assertj.core.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,20 +19,20 @@ import static org.mockito.Mockito.when;
 public class IngredientControllerTest {
 
     @Autowired
-    FoodController ingredientController;
+    FoodController foodController;
     @MockBean
-    FoodIncService foodIncService;
+    FoodService foodService;
 
     @Test
     public void IngredientController_pizzaOutput() {
         FoodDto expectedDto = new FoodDto("pizza", 400,4,10, 50);
-        FoodDto otherDto = new FoodDto("pizza", 300,4,10, 50);
+        FoodDto otherDto = new FoodDto("pizza", 400,4,10, 50);
 
         Mono<FoodDto> expectedResult = Mono.just(expectedDto);
-        when(foodIncService.getNutrition("pizza")).thenReturn(expectedResult);
+        when(foodService.getNutrition("pizza")).thenReturn(expectedResult);
 
 
-        StepVerifier.create(ingredientController.getNutritionData("pizza"))
+        StepVerifier.create(foodController.getNutritionData("pizza"))
                 .assertNext(item -> assertThat(item).isEqualToComparingFieldByField(otherDto))
                 .verifyComplete();
     }
