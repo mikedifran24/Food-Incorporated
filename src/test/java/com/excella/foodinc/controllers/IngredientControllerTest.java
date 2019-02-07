@@ -1,8 +1,7 @@
 package com.excella.foodinc.controllers;
 
 import com.excella.foodinc.common.FoodDto;
-import com.excella.foodinc.controllers.controllerInterface.IngredientControllerInterface;
-import com.excella.foodinc.services.FoodIncInterface;
+import com.excella.foodinc.services.FoodIncService;
 import static org.assertj.core.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,9 +19,9 @@ import static org.mockito.Mockito.when;
 public class IngredientControllerTest {
 
     @Autowired
-    IngredientControllerInterface ingredientController;
+    FoodController ingredientController;
     @MockBean
-    FoodIncInterface foodIncInterface;
+    FoodIncService foodIncService;
 
     @Test
     public void IngredientController_pizzaOutput() {
@@ -30,7 +29,7 @@ public class IngredientControllerTest {
         FoodDto otherDto = new FoodDto("pizza", 300,4,10, 50);
 
         Mono<FoodDto> expectedResult = Mono.just(expectedDto);
-        when(foodIncInterface.getNutrition("pizza")).thenReturn(expectedResult);
+        when(foodIncService.getNutrition("pizza")).thenReturn(expectedResult);
 
 
         StepVerifier.create(ingredientController.getNutritionData("pizza"))

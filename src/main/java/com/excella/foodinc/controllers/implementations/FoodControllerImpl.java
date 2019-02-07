@@ -1,8 +1,8 @@
-package com.excella.foodinc.controllers;
+package com.excella.foodinc.controllers.implementations;
 
 import com.excella.foodinc.common.FoodDto;
-import com.excella.foodinc.controllers.controllerInterface.IngredientControllerInterface;
-import com.excella.foodinc.services.FoodIncInterface;
+import com.excella.foodinc.controllers.FoodController;
+import com.excella.foodinc.services.FoodIncService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +13,13 @@ import reactor.core.publisher.Mono;
 @RequestMapping
 @Slf4j
 @Service
-public class IngredientController implements IngredientControllerInterface {
+public class FoodControllerImpl implements FoodController {
 
     @Autowired
-    FoodIncInterface foodIncInterface;
+    FoodIncService foodIncService;
     @GetMapping("/food")
     public Mono<FoodDto> getNutritionData(@RequestParam(value="recipe", required = false) String recipe){
-        return foodIncInterface.getNutrition(recipe);// Mono.just(DummyData.foodMap.get(recipe));
+        return foodIncService.getNutrition(recipe);
     }
 
 }

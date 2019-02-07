@@ -1,13 +1,13 @@
 package com.excella.foodinc.services.implementation;
 
 import com.excella.foodinc.common.FoodDto;
-import com.excella.foodinc.services.FoodIncInterface;
+import com.excella.foodinc.services.FoodIncService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class FoodServiceImpl implements FoodIncInterface {
+public class FoodServiceImpl implements FoodIncService {
 
     @Autowired
     public FoodServiceImpl(){}
