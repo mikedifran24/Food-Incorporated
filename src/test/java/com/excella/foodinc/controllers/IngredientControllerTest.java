@@ -31,10 +31,35 @@ public class IngredientControllerTest {
         Mono<FoodDto> expectedResult = Mono.just(expectedDto);
         when(foodService.getNutrition("pizza")).thenReturn(expectedResult);
 
-
         StepVerifier.create(foodController.getNutritionData("pizza"))
                 .assertNext(item -> assertThat(item).isEqualToComparingFieldByField(otherDto))
                 .verifyComplete();
     }
+
+    @Test
+    public void IngredientController_appleOutput() {
+        FoodDto expectedDto = new FoodDto("apple",80, 0, 0, 21);
+        FoodDto otherDto = new FoodDto("apple",80, 0, 0, 21);
+
+        Mono<FoodDto> expectedResult = Mono.just(expectedDto);
+        when(foodService.getNutrition("apple")).thenReturn(expectedResult);
+
+        StepVerifier.create(expectedResult)
+                .assertNext(item -> assertThat(item).isEqualToComparingFieldByField(otherDto))
+                .verifyComplete();
+    }
+    @Test
+    public void IngredientController_talapiaOutput() {
+        FoodDto expectedDto = new FoodDto("talapia",125, 26, 1, 0);
+        FoodDto otherDto = new FoodDto("talapia",125, 26, 1, 0);
+
+        Mono<FoodDto> expectedResult = Mono.just(expectedDto);
+        when(foodService.getNutrition("talapia")).thenReturn(expectedResult);
+
+        StepVerifier.create(expectedResult)
+                .assertNext(item -> assertThat(item).isEqualToComparingFieldByField(otherDto))
+                .verifyComplete();
+    }
 }
+
 
