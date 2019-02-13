@@ -1,6 +1,6 @@
 package com.excella.foodinc.controllers;
 
-import com.excella.foodinc.common.FoodDto;
+import com.excella.foodinc.model.FoodDto;
 import reactor.core.publisher.Mono;
 
 public interface FoodController {

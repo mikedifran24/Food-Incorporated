@@ -1,4 +1,4 @@
-package com.excella.foodinc.common;
+package com.excella.foodinc.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 

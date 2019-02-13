@@ -1,6 +1,6 @@
 package com.excella.foodinc.controllers;
 
-import com.excella.foodinc.common.FoodDto;
+import com.excella.foodinc.model.FoodDto;
 import com.excella.foodinc.services.FoodService;
 import static org.assertj.core.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;

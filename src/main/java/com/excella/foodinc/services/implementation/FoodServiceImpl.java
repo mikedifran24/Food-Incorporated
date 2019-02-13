@@ -1,6 +1,6 @@
 package com.excella.foodinc.services.implementation;
 
-import com.excella.foodinc.common.FoodDto;
+import com.excella.foodinc.model.FoodDto;
 import com.excella.foodinc.services.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
