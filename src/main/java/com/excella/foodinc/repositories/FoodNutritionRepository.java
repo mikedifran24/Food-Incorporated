@@ -10,9 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface FoodNutritionRepository extends JpaRepository<FoodNutritionalInformation, Long>{
+public interface FoodNutritionRepository extends JpaRepository<FoodNutritionalInformation, String>{
 
-    List<FoodNutritionalInformation> findFoodByName(String name);
-//    @Query("SELECT * FROM Food_Nutritional_Information fni WHERE fni.name = :name")
-//    findFoodByName(@Param("name") String name);
+    @Query("SELECT name FROM FoodNutritionalInformation fni WHERE fni.name = :name")
+    public List<FoodNutritionalInformation> findFoodByName(@Param("name") String name);
 }

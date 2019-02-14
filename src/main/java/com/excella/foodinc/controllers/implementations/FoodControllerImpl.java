@@ -27,9 +27,9 @@ public class FoodControllerImpl implements FoodController {
     public Mono<FoodDto> getNutritionData(@RequestParam(value="food", required = false) String food){
         return foodService.getNutrition(food);
     }
-//    @GetMapping("/nutrition/test")
-//    public List<FoodNutritionalInformation> getFoodByName(@RequestParam(value="food", required = false)String food){
-//        return foodNutritionRepository.findFoodByName(food);
-//    }
+    @GetMapping("/nutrition/test")
+    public List<FoodNutritionalInformation> getFoodByName(@RequestParam(value="food", required = false)String food){
+        return foodNutritionRepository.findFoodByName(food);
+    }
 
 }

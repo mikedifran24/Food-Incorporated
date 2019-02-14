@@ -1,10 +1,12 @@
 package com.excella.foodinc.services.implementation;
 
+import com.excella.foodinc.common.DummyData;
 import com.excella.foodinc.model.FoodDto;
 import com.excella.foodinc.services.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+import com.excella.foodinc.common.DummyData.*;
 
 @Service
 public class FoodServiceImpl implements FoodService {
@@ -12,6 +14,6 @@ public class FoodServiceImpl implements FoodService {
     @Autowired
     public FoodServiceImpl(){}
     public Mono<FoodDto> getNutrition(String foodItem) {
-        return null;
+       return Mono.just(DummyData.setData().get(foodItem));
     }
 }

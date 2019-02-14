@@ -15,12 +15,12 @@ import org.springframework.data.annotation.PersistenceConstructor;
 @Entity
 @Table(name = "Food_Nutritional_Information")
 public class FoodNutritionalInformation {
-   @NonFinal @Id private Long id;
-   @NonNull String name;
-   @NonNull int calories;
-   @NonNull int protein;
-   @NonNull int fat;
-   @NonNull int carbs;
+   @Id private Long id;
+    String name;
+    int calories;
+    int protein;
+    int fat;
+    int carbs;
 
    @Builder(toBuilder = true)
    @PersistenceConstructor
