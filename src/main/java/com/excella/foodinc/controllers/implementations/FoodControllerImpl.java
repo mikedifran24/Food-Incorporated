@@ -29,7 +29,7 @@ public class FoodControllerImpl implements FoodController {
     }
     @GetMapping("/nutrition/test")
     public List<FoodNutritionalInformation> getFoodByName(@RequestParam(value="food", required = false)String food){
+        System.out.println("return value is " + foodNutritionRepository.findFoodByName(food));
         return foodNutritionRepository.findFoodByName(food);
     }
-
 }

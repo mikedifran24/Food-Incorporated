@@ -1,6 +1,6 @@
 spring:
   flyway:
-    schemas: FOODINC
+    schemas: foodinc
 datasource:
   url: jdbc:postgresql://developer:mysecretpassword@db/foodinc
   username: developer
