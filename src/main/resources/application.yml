@@ -1,0 +1,8 @@
+spring:
+  flyway:
+    schemas: foodinc
+datasource:
+  url: jdbc:postgresql://developer:mysecretpassword@db/foodinc
+  username: developer
+  password: mysecretpassword
+  driver-class-name: org.postgresql.Driver

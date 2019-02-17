@@ -1,5 +1,7 @@
 package com.excella.foodinc.common;
 
+import com.excella.foodinc.model.FoodDto;
+
 import java.util.HashMap;
 
 public class DummyData {

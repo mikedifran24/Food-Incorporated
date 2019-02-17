@@ -27,6 +27,7 @@ services:
       PGDATA: /var/lib/postgresql/data/case_data
       POSTGRES_USER: developer
       POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: foodinc
     volumes:
       - postgres_db:/var/lib/postgresql/data/case_data
     ports:
