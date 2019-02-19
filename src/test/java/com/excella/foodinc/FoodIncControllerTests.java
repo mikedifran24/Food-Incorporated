@@ -2,33 +2,47 @@ package com.excella.foodinc;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
 import reactor.core.publisher.Flux;
+import reactor.test.StepVerifier;
+import java.util.ArrayList;
+import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
-@WebFluxTest
-@WebAppConfiguration
-public abstract class FoodIncControllerTests {
-
+public class FoodIncControllerTests {
     @Autowired
-    private WebTestClient webTestClient;
+    private FoodIncController foodIncController;
+
+    @MockBean
+    private FoodIncService foodIncService;
 
     protected void setUp() {
+        foodIncController = new FoodIncController();
     }
 
     @Test
     public void testRecipe()  {
-//        webTestClient.get().uri("/recipe?name=tacos")
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody(Flux.class)
-//                .isEqualTo(Flux.just("beef", "lettuce", "cheese"));
+        List<String> ingredients = new ArrayList<>();
+        ingredients.add("beef");
+        ingredients.add("lettuce");
+        ingredients.add("cheese");
+
+        Flux<String> data = Flux.fromIterable(ingredients);
+
+
+        Mockito.when(this.foodIncController.recipe(Mockito.any(String.class)))
+                .thenReturn(data);
+
+        Flux<String> recipe = foodIncController.recipe("tacos");
+
+        StepVerifier
+                .create(recipe)
+                .expectNext("beef", "lettuce", "cheese")
+                .verifyComplete();
     }
 }

@@ -10,7 +10,6 @@ public class FoodIncService {
         if (recipeName.equals("tacos")) {
             ingredients.add("beef");
             ingredients.add("lettuce");
-            ingredients.add("lettuce");
             ingredients.add("cheese");
         }
         else if (recipeName.equals("pizza")) {
