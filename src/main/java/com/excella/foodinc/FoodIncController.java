@@ -1,6 +1,7 @@
 package com.excella.foodinc;
 
-import reactor.core.publisher.Flux;
+import com.excella.foodinc.models.DummyData;
+import com.excella.foodinc.models.FoodDTO;
 import reactor.core.publisher.Mono;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +22,9 @@ public class FoodIncController {
         return Mono.just("Hello World!");
     }
 
-    @RequestMapping("/recipe")
-    public Flux<String> recipe(@RequestParam("name") String name) {
-        return Flux.fromIterable(foodIncService.getIngredients(name));
+    @RequestMapping("/food")
+    public Mono<FoodDTO> getFood(@RequestParam("name") String name) {
+        return foodIncService.getFoodInfo(name);
     }
 
 }

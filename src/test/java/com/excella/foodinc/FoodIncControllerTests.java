@@ -1,5 +1,7 @@
 package com.excella.foodinc;
 
+import com.excella.foodinc.models.FoodDTO;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -7,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import java.util.ArrayList;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -21,28 +21,18 @@ public class FoodIncControllerTests {
     @MockBean
     private FoodIncService foodIncService;
 
-    protected void setUp() {
-        foodIncController = new FoodIncController();
-    }
-
     @Test
     public void testRecipe()  {
-        List<String> ingredients = new ArrayList<>();
-        ingredients.add("beef");
-        ingredients.add("lettuce");
-        ingredients.add("cheese");
+        FoodDTO ingredients = new FoodDTO("tacos", 300, 10, 5, 15, 1);
 
-        Flux<String> data = Flux.fromIterable(ingredients);
+        Mockito.when(this.foodIncService.getFoodInfo("tacos"))
+                .thenReturn(Mono.just(ingredients));
 
-
-        Mockito.when(this.foodIncController.recipe(Mockito.any(String.class)))
-                .thenReturn(data);
-
-        Flux<String> recipe = foodIncController.recipe("tacos");
+        Mono<FoodDTO> recipe = foodIncController.getFood("tacos");
 
         StepVerifier
                 .create(recipe)
-                .expectNext("beef", "lettuce", "cheese")
+                .assertNext(food -> Assertions.assertThat(food).isEqualToComparingFieldByField(ingredients))
                 .verifyComplete();
     }
 }
