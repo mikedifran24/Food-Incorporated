@@ -30,7 +30,7 @@ services:
     volumes:
       - postgres_db:/var/lib/postgresql/data/case_data
     ports:
-      - "5440:5432"
+      - "5432:5432"
 volumes:
   gradle_cache:
   postgres_db:
