@@ -1,6 +1,8 @@
 package com.excella.foodinc;
 
-import com.excella.foodinc.models.FoodDTO;
+import com.excella.foodinc.DTO.FoodDTO;
+import com.excella.foodinc.controllers.FoodIncController;
+import com.excella.foodinc.services.FoodIncService;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

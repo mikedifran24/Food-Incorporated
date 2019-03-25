@@ -1,7 +1,7 @@
-package com.excella.foodinc;
+package com.excella.foodinc.services;
 
 import com.excella.foodinc.models.DummyData;
-import com.excella.foodinc.models.FoodDTO;
+import com.excella.foodinc.DTO.FoodDTO;
 import reactor.core.publisher.Mono;
 
 public class FoodIncService {

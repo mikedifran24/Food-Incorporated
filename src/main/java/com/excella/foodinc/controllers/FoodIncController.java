@@ -1,7 +1,7 @@
-package com.excella.foodinc;
+package com.excella.foodinc.controllers;
 
-import com.excella.foodinc.models.DummyData;
-import com.excella.foodinc.models.FoodDTO;
+import com.excella.foodinc.DTO.FoodDTO;
+import com.excella.foodinc.services.FoodIncService;
 import reactor.core.publisher.Mono;
 
 import org.springframework.web.bind.annotation.RestController;
