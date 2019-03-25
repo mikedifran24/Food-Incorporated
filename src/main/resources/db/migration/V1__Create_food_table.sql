@@ -1,5 +1,5 @@
 create table FOOD (
-    ID int not null,
+    ID SERIAL not null,
     NAME varchar(100) not null,
     CALORIES int not null,
     FAT int not null,

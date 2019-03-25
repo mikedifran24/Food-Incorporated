@@ -1,7 +1,9 @@
 package com.excella.foodinc.controllers;
 
 import com.excella.foodinc.DTO.FoodDTO;
+import com.excella.foodinc.models.Food;
 import com.excella.foodinc.services.FoodIncService;
+import org.springframework.beans.factory.annotation.Autowired;
 import reactor.core.publisher.Mono;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -11,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 public class FoodIncController {
 
+    @Autowired
     private FoodIncService foodIncService;
-
-    FoodIncController() {
-        foodIncService = new FoodIncService();
-    }
 
     @RequestMapping("/demo")
     public Mono<String> demo() {
@@ -23,7 +22,7 @@ public class FoodIncController {
     }
 
     @RequestMapping("/food")
-    public Mono<FoodDTO> getFood(@RequestParam("name") String name) {
+    public Mono<Food> getFood(@RequestParam("name") String name) {
         return foodIncService.getFoodInfo(name);
     }
 

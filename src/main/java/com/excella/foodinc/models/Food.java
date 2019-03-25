@@ -1,12 +1,14 @@
 package com.excella.foodinc.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Persistent;
 
-@Getter @Setter @NoArgsConstructor
+@Persistent @Value
+@Getter @NoArgsConstructor
 public class Food {
-    private int id;
+    @Id
+    private Long id;
     private String name;
     private int calories;
     private int fat;
@@ -14,7 +16,8 @@ public class Food {
     private int protein;
     private int filter;
 
-    public Food(int id, String name, int calories, int fat, int sugar, int protein, int filter) {
+    @Builder
+    public Food(Long id, String name, int calories, int fat, int sugar, int protein, int filter) {
         this.id = id;
         this.name = name;
         this.calories = calories;
