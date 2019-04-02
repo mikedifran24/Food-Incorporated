@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface FoodRepository extends CrudRepository<Food, Long> {
-    @Query("SELECT f FROM FOOD f WHERE f.name=:name")
+    @Query("SELECT id, name, calories, fat, sugar, protein, filter FROM FOOD f WHERE f.name = :name")
     Food getFoodByName(@Param("name") String name);
 }
