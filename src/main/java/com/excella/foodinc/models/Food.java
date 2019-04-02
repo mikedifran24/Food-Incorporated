@@ -4,8 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Persistent;
 
-@Persistent @Value
-@Getter @NoArgsConstructor
+@Value
 public class Food {
     @Id
     private Long id;
